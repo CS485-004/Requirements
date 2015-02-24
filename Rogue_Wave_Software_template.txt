@@ -1,0 +1,238 @@
+Functional SpecificationProduct XRevision 1.0(Template version 2.3, 6/20/97)Confidential
+
+© Copyright Rogue Wave Software, Inc. 1997.Revision History
+
+RevdateAuthorComments
+
+1.0????Initial draft
+
+
+
+
+This document contains trade secret data which are the property of Rogue Wave Software, Inc. This document is submitted to recipient in confidence, for
+
+Rogue Wave internal business purposes only. Information contained herein may not be otherwise used, copied, or disclosed in whole or in part except as
+
+permitted by written agreement signed by an officer of Rogue Wave Software, Inc. This material is protected by copyright as an unpublished work under
+
+Section 104 of Title 17, United States Code. Unauthorized use, copying or other reproduction is prohibited by law, and may give rise to civil and criminal
+
+liabilities.
+
+202/10/98AuthorizationDateXxxx YyyyyProgram ManagerXxxx YyyyyProduct Manager
+
+Xxxx YyyyyDevelopmentManager
+
+Xxxx YyyyyQuality EngineeringManager
+
+Xxxx YyyyyTechnical WritingManager
+
+Xxxx YyyyyTechnical SupportManager
+
+
+
+
+This document contains trade secret data which are the property of Rogue Wave Software, Inc. This document is submitted to recipient in confidence, for
+
+Rogue Wave internal business purposes only. Information contained herein may not be otherwise used, copied, or disclosed in whole or in part except as
+
+permitted by written agreement signed by an officer of Rogue Wave Software, Inc. This material is protected by copyright as an unpublished work under
+
+Section 104 of Title 17, United States Code. Unauthorized use, copying or other reproduction is prohibited by law, and may give rise to civil and criminal
+
+liabilities.
+
+02/10/9831. INTRODUCTION62. OVERVIEW63. ENVIRONMENT74. ARCHITECTURE74.1 Module 184.2 Module 284.3 Module x85. FEATURES85.1 Feature 1 - short description that fits on one line95.1.1 sub-feature 1    short description, one line95.2 Feature 2 - short description that fits on one line95.2.1 sub-feature 1    short description, one line95.2.2 sub-feature 2    short description, one line96. INTERFACES96.1 Command Line Interface106.2 Graphical User Interface106.3 Programmer Interface106.4 Data Interfaces107. DEFECTS ( IF APPLICABLE)108. INSTALLATION109. CONSTRAINTS109.1 Design and Implementation Constraints109.2 Time and Cost Constraints10
+
+
+
+
+This document contains trade secret data which are the property of Rogue Wave Software, Inc. This document is submitted to recipient in confidence, for
+
+Rogue Wave internal business purposes only. Information contained herein may not be otherwise used, copied, or disclosed in whole or in part except as
+
+permitted by written agreement signed by an officer of Rogue Wave Software, Inc. This material is protected by copyright as an unpublished work under
+
+Section 104 of Title 17, United States Code. Unauthorized use, copying or other reproduction is prohibited by law, and may give rise to civil and criminal
+
+liabilities.
+
+402/10/9810. RISKS1111. APPENDIX A - SUPPORT MATRIX1212. APPENDIX B - GLOSSARY1313. APPENDIX C - FEATURE CHECKLIST14
+
+
+
+
+This document contains trade secret data which are the property of Rogue Wave Software, Inc. This document is submitted to recipient in confidence, for
+
+Rogue Wave internal business purposes only. Information contained herein may not be otherwise used, copied, or disclosed in whole or in part except as
+
+permitted by written agreement signed by an officer of Rogue Wave Software, Inc. This material is protected by copyright as an unpublished work under
+
+Section 104 of Title 17, United States Code. Unauthorized use, copying or other reproduction is prohibited by law, and may give rise to civil and criminal
+
+liabilities.
+
+02/10/985INSTRUCTIONS:   HOW TO USE THIS DOCUMENTThis document is a content template from which a final functional spec is created.  All text in“red” is provided to describe the information required for a section. (For convenience all red texthas the Word character style "notes" applied to it.) All red text must be deleted from the finaldocument. In addition to some sentences describing the required contents for a section, a list ofpertinent questions may accompany the sentences to help obtain the desired information.A style template is attached to this document (t:\wendi\newtmpl\funcspec.dot ) that controlsthe available styles.  Print the style template out.  Read it. Keep it handy, so you know whento use which styles for various situations. Use the “normal” style when entering text for newparagraphs (not the “notes” style since it is red).When creating a content template document, start with this one.  Rename it to the respectivetemplate you are creating, and have at it.THE MAIN GOALS OF A FUNCTIONAL SPECIFICATION ARE TO:• Contain enough information such that one may implement the desired product from thefunctional spec.  The functional spec contains the architectural requirements and adescription of the product feature set.  The architectural requirements may be in a separatedocument.• Precisely describe precisely what will be developed  in order to meet the requirementsspecified in the Market Requirements Document (MRD). You can think of the FS as anagreement between development and the rest of the company that specifies precisely whatis to be developed.• Represent a consensus among all people involved in the product definition.• Be clear to all people who have to read it, which means that special care must be takenwith the technical terms and the language used.• Provide sufficient description of features to enable the creation of test specifications to bewritten for the feature.• The FS describes the product from the customer’s view, things that are not important to thecustomer such as implementation details should be left out of this document.Implementation will be covered in the product’s Detailed Design (DD) document.• Define the support matrix the product will be built against.
+
+
+
+
+This document contains trade secret data which are the property of Rogue Wave Software, Inc. This document is submitted to recipient in confidence, for
+
+Rogue Wave internal business purposes only. Information contained herein may not be otherwise used, copied, or disclosed in whole or in part except as
+
+permitted by written agreement signed by an officer of Rogue Wave Software, Inc. This material is protected by copyright as an unpublished work under
+
+Section 104 of Title 17, United States Code. Unauthorized use, copying or other reproduction is prohibited by law, and may give rise to civil and criminal
+
+liabilities.
+
+602/10/981. IntroductionIn the Introduction section you should provide a brief introduction to the product, the technicalchallenges involved in designing the product and the organization of the FS.2. OverviewThe Overview section should describe the main product characteristics. A person reading onlythis section should learn the main ideas behind the product: what the product is, who is goingto use the product, and where it is going to be used.Because the FS describes what will be developed in order to meet the requirements specified inthe MRD, it is helpful to provide a table that lists the MRD requirements and for eachrequirement lists the product features that address that requirement.  An example of such atable, from the SPM 1.2 product, is included below.   All features described in this section shouldbe detailed later in this document.The Overview section should also describe the structure of the rest of the document, explainingits main sections. This helps a person who is trying to find some specific information in thedocument.Table 1.   List of Features, Changes and Enhancements for SPM 1.2FeatureChange or Enhancement
+
+Product-specific build mechanism
+
+ 11.11.21.31.4Question file, answer file, and makefile modification scriptconventions• file names• file locations• question file format• answer file format
+
+  2 2.1 2.2 2.3 Required changes to the core library:• Define question and answer classes• Find and read question files• Write answer files
+
+  3 3.1  Required changes to the API layer: API layer must be able to recognize when to search for questionfiles, and how to handle anomalies.
+
+ 4 4.1 4.2 Required changes to the GUI• Augment UIUtilities interface• Implement augmented interface
+
+
+
+
+This document contains trade secret data which are the property of Rogue Wave Software, Inc. This document is submitted to recipient in confidence, for
+
+Rogue Wave internal business purposes only. Information contained herein may not be otherwise used, copied, or disclosed in whole or in part except as
+
+permitted by written agreement signed by an officer of Rogue Wave Software, Inc. This material is protected by copyright as an unpublished work under
+
+Section 104 of Title 17, United States Code. Unauthorized use, copying or other reproduction is prohibited by law, and may give rise to civil and criminal
+
+liabilities.
+
+02/10/987FeatureChange or Enhancement
+
+ Support for Multiple Repositories
+
+  5 5.1 Working repository Contains installed parts, examples, libraries, documentation,build profiles, environment profiles, configurations.  Similar toBuild Info Tab in SPM 1.0.  One per SPM installation.
+
+  6 6.1 Distribution repository Repository that contains information about products that can bepurchased and/or installed.  Similar to the Products Tab in SPM1.0.  A given SPM installation can access one or more distributionrepositories.
+
+  7 7.1  7.2 Support for repository installation Installing the working repository means adding new informationto the installed working repository. Installing the distribution repository means copying the entirerepository to the user's disk.
+
+  8 8.1 Verification of installation media SPM will verify that the right disk or CD is in place when theuser attempts to install a part.
+
+  9 9.1 9.2 GUI changes needed to support multiple repositories:• Change the label on the “Products” tab• Add option for changing the active distribution repository
+
+3. EnvironmentThe environment section should describes the hardware and software system environment inwhich the product is to exist.  You can speak in somewhat general terms in this section and youcan reference the support matrix in appendix A of this document.If the product is a class library or set of components then describe what types of compilers,development environments and operating systems will it support.   If the product involvesdatabases or other products, then describe what types of databases or other products will itsupport.   If the product is an application, then describe what hardware platforms, operatingsystems and other products it will work with.Note:  The support matrix in this document is a refinement of the support matrix specified inthe MRD.  The support matrix in appendix A is what development will use to deliver theproduct on.4. ArchitectureThis section should describe at a high level the architecture of the product.   Remember thatyou are addressing the requirements specified in the MRD and the end-customer’s view of theproduct.  So, you should not specify architectural details that are not important to the MRD orto the customer.
+
+
+
+
+This document contains trade secret data which are the property of Rogue Wave Software, Inc. This document is submitted to recipient in confidence, for
+
+Rogue Wave internal business purposes only. Information contained herein may not be otherwise used, copied, or disclosed in whole or in part except as
+
+permitted by written agreement signed by an officer of Rogue Wave Software, Inc. This material is protected by copyright as an unpublished work under
+
+Section 104 of Title 17, United States Code. Unauthorized use, copying or other reproduction is prohibited by law, and may give rise to civil and criminal
+
+liabilities.
+
+802/10/98If the MRD specifies a specific architecture, or if a specific architecture will ensure that theproduct meets the requirements of the MRD, then specify it here.  However, if the underlyingproduct architecture is not important to the MRD or to the end-customer then leave it for theDD.Use of diagrams or other graphics such as a layer diagram are very useful.4.1 Module 1Verbiage on design of this component and its relationship to the others.4.2 Module 2Verbiage on design of this component and its relationship to the others.4.3 Module xVerbiage on design of this component and its relationship to the others.5. FeaturesDescribe each product feature with at least a paragraph or two of text.  Some features willhave sub-features and you may also wish to include design and implementation issues for somefeatures, but only if necessary to explain the feature.For existing products, it is not necessary to specify all the product features, but only the onesthat will be changed or improved, provided that the referenced features are documentedsomewhere. It is also a good idea, in this case, to add a references section in the document.If you are introducing new technical terms or abbreviations (which is very common whendescribing new technologies), it is useful to add an entry in the Glossary in Appendix A.There are some things to keep in mind when specifying a product feature. The first, and perhapsthe most important one, is to specify things that can be verified when the product is done. Theother ones are:• You should be as specific as possible. Generic terms are good in the introductory sections, butthey tend to cause misunderstandings if not explained in detail later.• Try to avoid the use of subjective qualifications such as “good”, “bad”, “reasonable”. Try toreplace them by objective terms.• Define a product feature in only one place. If you describe the same thing in more than oneplace, you might forget to update all the feature descriptions when you have to introducemodifications.• Numbers are always better than any qualification like “fast” or “efficient”, although it isvery difficult to predict performance. You can always refer to an existing product, and userelative comparison.• Do not specify features that are conflicting or mutually exclusive.• Clearly specifying what a product will NOT do is also an important issue.• Do not forget that what is obvious for you may not be obvious to other people.
+
+
+
+
+This document contains trade secret data which are the property of Rogue Wave Software, Inc. This document is submitted to recipient in confidence, for
+
+Rogue Wave internal business purposes only. Information contained herein may not be otherwise used, copied, or disclosed in whole or in part except as
+
+permitted by written agreement signed by an officer of Rogue Wave Software, Inc. This material is protected by copyright as an unpublished work under
+
+Section 104 of Title 17, United States Code. Unauthorized use, copying or other reproduction is prohibited by law, and may give rise to civil and criminal
+
+liabilities.
+
+02/10/989• The words “et cetera” can hold virtually anything. Try to avoid it.• Whenever you have been subjective in some feature specification, ask yourself: “what did Ireally want to mean with ‘xyz’”? Do not forget that, if you cannot write clearly what youwant, then you probably cannot code it, and it will be even worse for someone to check it.5.1 Feature 1 - short description that fits on one lineYou can add some more verbiage to describe the background, set the stage, describe thefunctionality in detail.5.1.1 sub-feature 1    short description, one lineYou can add some more verbiage to describe the background, set the stage, describe thefunctionality in detail.5.2 Feature 2 - short description that fits on one lineYou can add some more verbiage to describe the background, set the stage, describe thefunctionality in detail.5.2.1 sub-feature 1    short description, one lineYou can add some more verbiage to describe the background, set the stage, describe thefunctionality in detail.5.2.2 sub-feature 2    short description, one lineYou can add some more verbiage to describe the background, set the stage, describe thefunctionality in detail.5.2.2.1 Design Issues for Feature 25.2.2.2 Implementation Issues for Feature 2*************    NOTE ***********If you have to add design or implementation issues to the functional spec you must clearlydelineate those issues by adding appropriately numbered sub-sections with title, so it isreadily apparent which feature you are referencing.6. InterfacesIf the product is a class library or a set of components, then you should describe the API for theproduct.  If the product is not a class library or a set of components, then you should describe howthe user will interact with the system.
+
+
+
+
+This document contains trade secret data which are the property of Rogue Wave Software, Inc. This document is submitted to recipient in confidence, for
+
+Rogue Wave internal business purposes only. Information contained herein may not be otherwise used, copied, or disclosed in whole or in part except as
+
+permitted by written agreement signed by an officer of Rogue Wave Software, Inc. This material is protected by copyright as an unpublished work under
+
+Section 104 of Title 17, United States Code. Unauthorized use, copying or other reproduction is prohibited by law, and may give rise to civil and criminal
+
+liabilities.
+
+1002/10/986.1 Command Line InterfaceList the commands and their arguments.6.2 Graphical User InterfaceDescribe the GUI in full: the menus, the dialogs, graphical views and representations, providescreen-shots, etc.6.3 Programmer InterfaceList and describe the classes and member functions of each class, control, bean or component inthe API.6.4 Data InterfacesDescribe the type of data files the product will be able to read and writeDescribe the network interfaces and protocols that the product will support.7. Defects ( if applicable)List all defects that are to be fixed for this release.  Defects must be assigned a priority.Priorities:• “A” -> must be fixed• “B” -> should be fixed• “C” -> fix if time permits8. InstallationDescribe the installation process that is required for the product.  Will the product be part ofproduct suite.  Will the product require compilation or integration into an IDE?9. Constraints9.1 Design and Implementation ConstraintsIf there are any constraints on how the system should be designed or implemented then discussthem here.9.2 Time and Cost ConstraintsIf there are any constraints on the cost of the system or the development time then describethem here.
+
+
+
+
+This document contains trade secret data which are the property of Rogue Wave Software, Inc. This document is submitted to recipient in confidence, for
+
+Rogue Wave internal business purposes only. Information contained herein may not be otherwise used, copied, or disclosed in whole or in part except as
+
+permitted by written agreement signed by an officer of Rogue Wave Software, Inc. This material is protected by copyright as an unpublished work under
+
+Section 104 of Title 17, United States Code. Unauthorized use, copying or other reproduction is prohibited by law, and may give rise to civil and criminal
+
+liabilities.
+
+02/10/981110. RisksIdentify any risks involved in designing, implementing, testing and delivering the system.  Ifthere are any significant factors that may make it difficult to delivery a quality product in atimely fashion then discuss them here.  For each risk, state the probability that the risk willoccur and, if possible, the impact upon resources and schedule.Risks can take on different forms.  There are risks in deciding which features should go into aproduct and which features need to left out due to a variety of reasons.  There are technicalrisks, scheduling risks, and many other types.  Any potential hazard that can have negativeimpact on the project should be identified and analyzed to determine its impact and a new planof attack.Any feature defined in the requirements spec is assumed to be apart of the program. But, somefeatures are more important than others.  The features that must be included, the features thatshould be include, and those features that it would be nice to have should all be identified, soappropriate tradeoffs can be made.The technical risks should be identified.  Is the implementation technology mature enough tosupport the project.  What are alternative technologies?  What would happen if this featurecannot be implemented?  These questions should be addressed.Scheduling risks should be identified.  Is a milestone dependent upon another milestone?  Wasan estimation overly optimistic?  What is the critical path for this project?  Are all theresources available when needed?  Are they enough people or qualified  people to perform eachtask?
+
+
+
+
+This document contains trade secret data which are the property of Rogue Wave Software, Inc. This document is submitted to recipient in confidence, for
+
+Rogue Wave internal business purposes only. Information contained herein may not be otherwise used, copied, or disclosed in whole or in part except as
+
+permitted by written agreement signed by an officer of Rogue Wave Software, Inc. This material is protected by copyright as an unpublished work under
+
+Section 104 of Title 17, United States Code. Unauthorized use, copying or other reproduction is prohibited by law, and may give rise to civil and criminal
+
+liabilities.
+
+1202/10/9811. Appendix A - Support MatrixNote: This support matrix is a refinement of the support matrix specified in the MRD.  This iswhat development will deliver the product on.The support matrix defines the level of support for this product on various platformconfigurations.  A platform configuration consists of a operating system, compiler combinationalong with any other dependencies required by the Rogue Wave product.  Exact versions foreach item listed in the support matrix must be provided.Any platform listed in the support matrix will be supported by the company which means thecompany will sell support for that platform and technical support will provide support for it.Each product has their own format for a support matrix.
+
+
+
+
+This document contains trade secret data which are the property of Rogue Wave Software, Inc. This document is submitted to recipient in confidence, for
+
+Rogue Wave internal business purposes only. Information contained herein may not be otherwise used, copied, or disclosed in whole or in part except as
+
+permitted by written agreement signed by an officer of Rogue Wave Software, Inc. This material is protected by copyright as an unpublished work under
+
+Section 104 of Title 17, United States Code. Unauthorized use, copying or other reproduction is prohibited by law, and may give rise to civil and criminal
+
+liabilities.
+
+02/10/981312. Appendix B - GlossaryDefinition of terms in alphabetical order.Term1:   a term that is just an example.  Put the term is bold letters with the definition innormal text.
+
+
+
+
+This document contains trade secret data which are the property of Rogue Wave Software, Inc. This document is submitted to recipient in confidence, for
+
+Rogue Wave internal business purposes only. Information contained herein may not be otherwise used, copied, or disclosed in whole or in part except as
+
+permitted by written agreement signed by an officer of Rogue Wave Software, Inc. This material is protected by copyright as an unpublished work under
+
+Section 104 of Title 17, United States Code. Unauthorized use, copying or other reproduction is prohibited by law, and may give rise to civil and criminal
+
+liabilities.
+
+1402/10/9813. Appendix C - Feature ChecklistClearly identify all the features in a numbered list, so they can be easily identified and cross-referenced within this document and by subsequent documents such as the test plan, detaileddesign spec.  Provide a numbered list of one sentence descriptions for each product feature.
+
+
+
+
